@@ -1,0 +1,117 @@
+/* Customer.css
+   - Uses your color variables
+   - Styles for a 3-column tile menu (image, name, price only)
+*/
+
+/* --- Variable Definitions --- */
+.root {
+    -fx-primary-color: #FEC208;
+    -fx-secondary-color: #CF240A;
+    -fx-accent-color: #ECF38E;
+    -fx-light-color: #FFFFFF;
+}
+
+/* --- Main Container --- */
+.welcome-container {
+    -fx-background-color: -fx-primary-color;
+    -fx-font-family: "McDonalds Helvetica", "Helvetica", "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-padding: 12;
+}
+
+/* Top logo */
+.logo-panel {
+    -fx-padding: 12 18;
+    -fx-alignment: center-left;
+    -fx-spacing: 12;
+    -fx-background-color: transparent;
+}
+
+.logo-panel .text {
+    -fx-font-size: 1.8em;
+    -fx-fill: -fx-secondary-color;
+    -fx-font-weight: bold;
+}
+
+/* Left content (category buttons) */
+.content-panel {
+    -fx-background-color: -fx-light-color;
+    -fx-font-family: "McDonalds Helvetica", "Helvetica", "Arial", sans-serif;
+    -fx-padding: 16;
+}
+
+/* --- Scroll / Grid --- */
+.menu-scroll {
+    -fx-background: transparent;
+    -fx-padding: 6;
+    -fx-fit-to-width: true;
+}
+
+.menu-grid {
+    -fx-hgap: 18;
+    -fx-vgap: 18;
+    -fx-padding: 8;
+    -fx-alignment: top-center;
+}
+
+/* --- Menu card (single tile) --- */
+.menu-card {
+    -fx-background-color: -fx-light-color;
+    -fx-background-radius: 12;
+    -fx-padding: 12;
+    -fx-alignment: center;
+    -fx-spacing: 8;
+    -fx-pref-width: 260px;      /* card width; 3 columns -> adjust to screen */
+    -fx-pref-height: 220px;
+    -fx-border-color: rgba(0,0,0,0.06);
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 6, 0.0, 0, 2);
+}
+
+/* image inside the card */
+.menu-card ImageView {
+    -fx-fit-width: 160px;
+    -fx-fit-height: 110px;
+}
+
+/* name + price */
+.menu-name {
+    -fx-font-size: 1.0em;
+    -fx-font-weight: 700;
+    -fx-fill: #222222;
+    -fx-text-alignment: center;
+}
+
+.menu-price {
+    -fx-font-size: 0.95em;
+    -fx-font-weight: 700;
+    -fx-fill: -fx-secondary-color;
+    -fx-text-alignment: center;
+}
+
+/* hover effect for card */
+.menu-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 10, 0.0, 0, 4);
+    -fx-translate-y: -4px;
+}
+
+/* Section button styling left */
+.section-button {
+    -fx-pref-width: 220px;
+    -fx-pref-height: 44px;
+    -fx-background-radius: 8;
+    -fx-background-color: -fx-light-color;
+    -fx-border-color: rgba(0,0,0,0.06);
+    -fx-font-weight: 700;
+    -fx-text-fill: #333333;
+}
+
+/* selected look (toggle in controller) */
+.section-button:selected, .section-button:armed {
+    -fx-background-color: -fx-secondary-color;
+    -fx-text-fill: -fx-light-color;
+}
+
+/* utilities */
+.centered { -fx-alignment: center; }
+.muted { -fx-text-fill: #666666; -fx-font-size: 0.9em; }

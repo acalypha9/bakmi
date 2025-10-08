@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="750.0" prefWidth="1200.0"
+            styleClass="welcome-container"
+            stylesheets="@../../Styles/Customer.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.kelompok6.bakmi.Controllers.Customers.CustomerController">
+
+    <!-- TOP: Logo Bar -->
+    <top>
+        <HBox spacing="12.0" styleClass="logo-panel" BorderPane.alignment="CENTER">
+            <children>
+                <Text styleClass="text" text="BAKMI" />
+                <ImageView fitHeight="80.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../Images/logo_bakmi.png" />
+                    </image>
+                </ImageView>
+                <Text styleClass="text" text="PENS" />
+                <Region HBox.hgrow="ALWAYS" />
+            </children>
+        </HBox>
+    </top>
+
+    <!-- LEFT: Sidebar Buttons -->
+    <left>
+        <VBox prefWidth="260.0" spacing="12.0" styleClass="content-panel" BorderPane.alignment="CENTER_LEFT">
+            <children>
+                <Label style="-fx-font-size:1.1em; -fx-font-weight:700; -fx-padding:6 0 6 6;" text="Kategori" />
+                <Button fx:id="btnPromo" mnemonicParsing="false" styleClass="section-button" text="Paket Promo" />
+                <Button fx:id="btnMakanan" mnemonicParsing="false" styleClass="section-button" text="Makanan" />
+                <Button fx:id="btnMinuman" mnemonicParsing="false" styleClass="section-button" text="Minuman" />
+                <Button fx:id="btnCamilan" mnemonicParsing="false" styleClass="section-button" text="Camilan" />
+                <Region VBox.vgrow="ALWAYS" />
+            </children>
+        </VBox>
+    </left>
+
+    <!-- CENTER: Menu Grid -->
+    <center>
+        <VBox spacing="12.0" styleClass="content-panel" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="categoryTitle" style="-fx-font-size:1.25em; -fx-font-weight:700;" text="Semua Menu" />
+                <ScrollPane fx:id="menuScroll" fitToWidth="true" prefHeight="600.0" styleClass="menu-scroll" VBox.vgrow="ALWAYS">
+                    <content>
+                        <TilePane fx:id="menuGrid" hgap="18.0" vgap="18.0"
+                                  prefColumns="3" prefTileHeight="220.0" prefTileWidth="260.0"
+                                  styleClass="menu-grid" tileAlignment="TOP_LEFT">
+                            <!-- SAMPLE ITEMS (to be replaced dynamically) -->
+                            <children>
+                                <VBox alignment="CENTER" spacing="8.0" styleClass="menu-card">
+                                    <children>
+                                        <ImageView fitHeight="114.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                                            <image><Image url="@../../Images/bakmi_ori.png" /></image>
+                                        </ImageView>
+                                        <Text styleClass="menu-name" text="Bakmi Original" />
+                                        <Text styleClass="menu-price" text="Rp 25.000" />
+                                    </children>
+                                </VBox>
+
+                                <VBox alignment="CENTER" spacing="8.0" styleClass="menu-card">
+                                    <children>
+                                        <ImageView pickOnBounds="true" preserveRatio="true">
+                                            <image><Image url="@../../Images/bakmi_pedas.png" /></image>
+                                        </ImageView>
+                                        <Text styleClass="menu-name" text="Bakmi Pedas" />
+                                        <Text styleClass="menu-price" text="Rp 28.000" />
+                                    </children>
+                                </VBox>
+
+                                <VBox alignment="CENTER" spacing="8.0" styleClass="menu-card">
+                                    <children>
+                                        <ImageView pickOnBounds="true" preserveRatio="true">
+                                            <image><Image url="@../../Images/es_teh.png" /></image>
+                                        </ImageView>
+                                        <Text styleClass="menu-name" text="Es Teh Manis" />
+                                        <Text styleClass="menu-price" text="Rp 8.000" />
+                                    </children>
+                                </VBox>
+
+                                <VBox alignment="CENTER" spacing="8.0" styleClass="menu-card">
+                                    <children>
+                                        <ImageView pickOnBounds="true" preserveRatio="true">
+                                            <image><Image url="@../../Images/bakmi_spesial.png" /></image>
+                                        </ImageView>
+                                        <Text styleClass="menu-name" text="Bakmi Spesial" />
+                                        <Text styleClass="menu-price" text="Rp 30.000" />
+                                    </children>
+                                </VBox>
+
+                                <VBox alignment="CENTER" spacing="8.0" styleClass="menu-card">
+                                    <children>
+                                        <ImageView pickOnBounds="true" preserveRatio="true">
+                                            <image><Image url="@../../Images/pangsit_goreng.png" /></image>
+                                        </ImageView>
+                                        <Text styleClass="menu-name" text="Pangsit Goreng" />
+                                        <Text styleClass="menu-price" text="Rp 12.000" />
+                                    </children>
+                                </VBox>
+
+                                <VBox alignment="CENTER" spacing="8.0" styleClass="menu-card">
+                                    <children>
+                                        <ImageView pickOnBounds="true" preserveRatio="true">
+                                            <image><Image url="@../../Images/dragon_juice.png" /></image>
+                                        </ImageView>
+                                        <Text styleClass="menu-name" text="Jus Naga" />
+                                        <Text styleClass="menu-price" text="Rp 15.000" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </TilePane>
+                    </content>
+                </ScrollPane>
+            </children>
+        </VBox>
+    </center>
+
+</BorderPane>
