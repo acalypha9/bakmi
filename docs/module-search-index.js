@@ -1,0 +1,1 @@
+moduleSearchIndex = [{"l":"com.kelompok6.bakmi"}];updateSearchResults();

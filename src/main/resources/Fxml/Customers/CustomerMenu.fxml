@@ -1,124 +1,236 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="750.0" prefWidth="1200.0"
-            styleClass="welcome-container"
-            stylesheets="@../../Styles/Customer.css"
-            xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.kelompok6.bakmi.Controllers.Customers.CustomerController">
+<StackPane fx:id="rootPane" prefHeight="750.0" prefWidth="1200.0" styleClass="welcome-container"
+           stylesheets="@../../Styles/Customer.css"
+           xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.kelompok6.bakmi.Controllers.Customers.MainCustomerController">
 
-    <!-- TOP: Logo Bar -->
-    <top>
-        <HBox spacing="12.0" styleClass="logo-panel" BorderPane.alignment="CENTER">
-            <children>
-                <Text styleClass="text" text="BAKMI" />
-                <ImageView fitHeight="80.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../Images/logo_bakmi.png" />
-                    </image>
-                </ImageView>
-                <Text styleClass="text" text="PENS" />
-                <Region HBox.hgrow="ALWAYS" />
-            </children>
-        </HBox>
-    </top>
+    <BorderPane fx:id="mainLayout">
+        <left>
+            <VBox prefWidth="260" spacing="12" styleClass="content-panel" BorderPane.alignment="CENTER_LEFT">
+                <children>
+                    <VBox prefHeight="87.0" prefWidth="30.0">
+                        <children>
+                            <ImageView fitHeight="300.0" fitWidth="234.0" pickOnBounds="true" preserveRatio="true">
+                                <image><Image url="@../../Images/logo_bakmi.png"/></image>
+                            </ImageView>
+                        </children>
+                    </VBox>
 
-    <!-- LEFT: Sidebar Buttons -->
-    <left>
-        <VBox prefWidth="260.0" spacing="12.0" styleClass="content-panel" BorderPane.alignment="CENTER_LEFT">
-            <children>
-                <Label style="-fx-font-size:1.1em; -fx-font-weight:700; -fx-padding:6 0 6 6;" text="Kategori" />
-                <Button fx:id="btnPromo" mnemonicParsing="false" styleClass="section-button" text="Paket Promo" />
-                <Button fx:id="btnMakanan" mnemonicParsing="false" styleClass="section-button" text="Makanan" />
-                <Button fx:id="btnMinuman" mnemonicParsing="false" styleClass="section-button" text="Minuman" />
-                <Button fx:id="btnCamilan" mnemonicParsing="false" styleClass="section-button" text="Camilan" />
-                <Region VBox.vgrow="ALWAYS" />
-            </children>
-        </VBox>
-    </left>
+                    <VBox prefHeight="503.0" prefWidth="228.0">
+                        <children>
+                            <Label styleClass="sidebar-title" text="Kategori"/>
+                            <Button onAction="#showPromo" styleClass="section-button" text="Paket Promo"/>
+                            <Button onAction="#showMakanan" styleClass="section-button" text="Makanan"/>
+                            <Button onAction="#showMinuman" styleClass="section-button" text="Minuman"/>
+                            <Button onAction="#showCamilan" styleClass="section-button" text="Camilan"/>
 
-    <!-- CENTER: Menu Grid -->
-    <center>
-        <VBox spacing="12.0" styleClass="content-panel" BorderPane.alignment="CENTER">
-            <children>
-                <Label fx:id="categoryTitle" style="-fx-font-size:1.25em; -fx-font-weight:700;" text="Semua Menu" />
-                <ScrollPane fx:id="menuScroll" fitToWidth="true" prefHeight="600.0" styleClass="menu-scroll" VBox.vgrow="ALWAYS">
-                    <content>
-                        <TilePane fx:id="menuGrid" hgap="18.0" vgap="18.0"
-                                  prefColumns="3" prefTileHeight="220.0" prefTileWidth="260.0"
-                                  styleClass="menu-grid" tileAlignment="TOP_LEFT">
-                            <!-- SAMPLE ITEMS (to be replaced dynamically) -->
-                            <children>
-                                <VBox alignment="CENTER" spacing="8.0" styleClass="menu-card">
-                                    <children>
-                                        <ImageView fitHeight="114.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
-                                            <image><Image url="@../../Images/bakmi_ori.png" /></image>
-                                        </ImageView>
-                                        <Text styleClass="menu-name" text="Bakmi Original" />
-                                        <Text styleClass="menu-price" text="Rp 25.000" />
-                                    </children>
-                                </VBox>
+                            <Region prefHeight="0.0" prefWidth="228.0" VBox.vgrow="ALWAYS"/>
+                            <Button fx:id="btnCamilan1" onAction="#btnBackClick" styleClass="section-button" text="   Kembali">
+                                <graphic><FontAwesomeIconView glyphName="CHEVRON_CIRCLE_LEFT" size="24"/></graphic>
+                                <padding><Insets top="6" right="6" bottom="6" left="6"/></padding>
+                            </Button>
+                        </children>
+                        <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                    </VBox>
+                </children>
+            </VBox>
+        </left>
 
-                                <VBox alignment="CENTER" spacing="8.0" styleClass="menu-card">
-                                    <children>
-                                        <ImageView pickOnBounds="true" preserveRatio="true">
-                                            <image><Image url="@../../Images/bakmi_pedas.png" /></image>
-                                        </ImageView>
-                                        <Text styleClass="menu-name" text="Bakmi Pedas" />
-                                        <Text styleClass="menu-price" text="Rp 28.000" />
-                                    </children>
-                                </VBox>
+        <center>
+            <VBox spacing="12" styleClass="content-panel" BorderPane.alignment="CENTER">
+                <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                <children>
+                    <Label fx:id="categoryTitle" styleClass="category-title" text="Bakmi"/>
 
-                                <VBox alignment="CENTER" spacing="8.0" styleClass="menu-card">
-                                    <children>
-                                        <ImageView pickOnBounds="true" preserveRatio="true">
-                                            <image><Image url="@../../Images/es_teh.png" /></image>
-                                        </ImageView>
-                                        <Text styleClass="menu-name" text="Es Teh Manis" />
-                                        <Text styleClass="menu-price" text="Rp 8.000" />
-                                    </children>
-                                </VBox>
+                    <HBox prefHeight="53.0" prefWidth="878.0" spacing="6">
+                        <children>
+                            <Button fx:id="btnSemua" mnemonicParsing="false" onAction="#onFilterSemua" prefHeight="54.0" prefWidth="206.0"/>
+                            <Button fx:id="btnFilter1" mnemonicParsing="false" onAction="#onFilter1" prefHeight="54.0" prefWidth="206.0"/>
+                            <Button fx:id="btnFilter2" mnemonicParsing="false" onAction="#onFilter2" prefHeight="54.0" prefWidth="206.0"/>
+                            <Button fx:id="btnFilter3" mnemonicParsing="false" onAction="#onFilter3" prefHeight="54.0" prefWidth="206.0"/>
+                            <Button fx:id="btnFilterLainnya" mnemonicParsing="false" onAction="#onFilterLainnya" prefHeight="54.0" prefWidth="206.0"/>
+                        </children>
+                    </HBox>
 
-                                <VBox alignment="CENTER" spacing="8.0" styleClass="menu-card">
-                                    <children>
-                                        <ImageView pickOnBounds="true" preserveRatio="true">
-                                            <image><Image url="@../../Images/bakmi_spesial.png" /></image>
-                                        </ImageView>
-                                        <Text styleClass="menu-name" text="Bakmi Spesial" />
-                                        <Text styleClass="menu-price" text="Rp 30.000" />
-                                    </children>
-                                </VBox>
+                    <ScrollPane fx:id="menuScroll" fitToWidth="true" prefHeight="600" styleClass="menu-scroll">
+                        <content>
+                            <TilePane fx:id="menuGrid" hgap="18" prefColumns="3" prefTileHeight="240" prefTileWidth="250"
+                                      styleClass="menu-grid" tileAlignment="TOP_LEFT" vgap="18"/>
+                        </content>
+                    </ScrollPane>
+                </children>
+            </VBox>
+        </center>
 
-                                <VBox alignment="CENTER" spacing="8.0" styleClass="menu-card">
-                                    <children>
-                                        <ImageView pickOnBounds="true" preserveRatio="true">
-                                            <image><Image url="@../../Images/pangsit_goreng.png" /></image>
-                                        </ImageView>
-                                        <Text styleClass="menu-name" text="Pangsit Goreng" />
-                                        <Text styleClass="menu-price" text="Rp 12.000" />
-                                    </children>
-                                </VBox>
+        <bottom>
+            <HBox fx:id="cartFooter" alignment="CENTER_RIGHT" spacing="12" styleClass="cart-footer" BorderPane.alignment="CENTER">
+                <padding><Insets top="8" right="12" bottom="8" left="12"/></padding>
+                <children>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="Total: "/>
+                    <Label fx:id="lblCartTotal" style="-fx-font-weight: bold; -fx-font-size: 1.05em;" text="Rp 0"/>
+                    <Button fx:id="btnOpenCart" onAction="#showCartWindow" text="Lihat Keranjang"/>
+                    <Button fx:id="btnCheckout" onAction="#onCheckout" text="Checkout"/>
+                </children>
+            </HBox>
+        </bottom>
+    </BorderPane>
 
-                                <VBox alignment="CENTER" spacing="8.0" styleClass="menu-card">
-                                    <children>
-                                        <ImageView pickOnBounds="true" preserveRatio="true">
-                                            <image><Image url="@../../Images/dragon_juice.png" /></image>
-                                        </ImageView>
-                                        <Text styleClass="menu-name" text="Jus Naga" />
-                                        <Text styleClass="menu-price" text="Rp 15.000" />
-                                    </children>
-                                </VBox>
-                            </children>
-                        </TilePane>
-                    </content>
-                </ScrollPane>
-            </children>
-        </VBox>
-    </center>
+    <StackPane fx:id="cartPanel" alignment="CENTER" managed="false" pickOnBounds="true" styleClass="modal-overlay" visible="false">
+        <children>
+            <BorderPane styleClass="cart-card" prefWidth="1000.0" maxWidth="1100.0" minHeight="420.0">
+                <top>
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+                        <children>
+                            <Label text="Keranjang Anda" style="-fx-font-weight:bold; -fx-font-size:1.05em;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button fx:id="btnClearCart" text="Bersihkan"/>
+                        </children>
+                    </HBox>
+                </top>
 
-</BorderPane>
+                <center>
+                    <ScrollPane fitToWidth="true" prefHeight="420.0">
+                        <content>
+                            <VBox fx:id="cartItemsContainer" spacing="8">
+                                <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                            </VBox>
+                        </content>
+                    </ScrollPane>
+                </center>
+
+                <bottom>
+                    <VBox>
+                        <children>
+                            <Separator/>
+                            <HBox spacing="8" alignment="CENTER_RIGHT">
+                                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                                <children>
+                                    <Label text="Total:"/>
+                                    <Label fx:id="lblCartPanelTotal" style="-fx-font-weight:bold; -fx-font-size:1.05em;"/>
+                                    <!-- backup onAction ke openConfirmPanel -->
+                                    <Button fx:id="btnCheckoutPanel" onAction="#openConfirmPanel" text="Checkout"/>
+                                    <Button fx:id="btnCloseCartPanel" text="Kembali"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                </bottom>
+            </BorderPane>
+        </children>
+    </StackPane>
+
+    <StackPane fx:id="confirmPanel" alignment="CENTER" managed="false" pickOnBounds="true" styleClass="modal-overlay" visible="false">
+        <children>
+            <BorderPane styleClass="confirm-card"
+                        prefWidth="520.0" minHeight="200.0">
+                <top>
+                    <HBox alignment="CENTER_LEFT">
+                        <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+                        <children>
+                            <Label text="Konfirmasi Pesanan" style="-fx-font-weight:bold; -fx-font-size:1.05em;"/>
+                        </children>
+                    </HBox>
+                </top>
+                <center>
+                    <VBox spacing="8" alignment="CENTER_LEFT">
+                        <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                        <children>
+                            <Label text="Masukkan Nama Kamu:"/>
+                            <TextField fx:id="tfCustomerName" promptText="Nama customer"/>
+                            <Label text="Total:"/>
+                            <Label fx:id="lblConfirmTotal" style="-fx-font-weight:bold; -fx-font-size:1.0em;"/>
+                        </children>
+                    </VBox>
+                </center>
+                <bottom>
+                    <HBox spacing="8" alignment="CENTER_RIGHT">
+                        <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                        <children>
+                            <Button fx:id="btnCancelConfirm" onAction="#onCancelConfirm" text="Batal"/>
+                            <Button fx:id="btnConfirmOrder" onAction="#onConfirmOrder" styleClass="addcart-button" text="Konfirmasi dan Simpan"/>
+                        </children>
+                    </HBox>
+                </bottom>
+            </BorderPane>
+        </children>
+    </StackPane>
+
+    <StackPane fx:id="tableSelectionBox" alignment="CENTER" managed="false" pickOnBounds="true" styleClass="modal-overlay" visible="false">
+        <children>
+            <BorderPane styleClass="confirm-card" prefWidth="420.0" minHeight="240.0">
+                <top>
+                    <HBox alignment="CENTER_LEFT">
+                        <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+                        <children>
+                            <Label text="Pilih Nomor Meja" style="-fx-font-weight:bold; -fx-font-size:1.05em;"/>
+                        </children>
+                    </HBox>
+                </top>
+                <center>
+                    <VBox spacing="8" alignment="CENTER_LEFT">
+                        <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                        <children>
+                            <Label text="Silakan pilih nomor meja yang tersedia:"/>
+                            <ChoiceBox fx:id="cbTableNumbers" prefWidth="200.0"/>
+                        </children>
+                    </VBox>
+                </center>
+                <bottom>
+                    <HBox spacing="8" alignment="CENTER_RIGHT">
+                        <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                        <children>
+                            <Button fx:id="btnTableCancel" onAction="#onTableCancel" text="Batal"/>
+                            <Button fx:id="btnTableOk" onAction="#onTableOk" text="Pilih"/>
+                        </children>
+                    </HBox>
+                </bottom>
+            </BorderPane>
+        </children>
+    </StackPane>
+
+    <StackPane fx:id="orderPanel" alignment="CENTER" managed="false" pickOnBounds="true" styleClass="modal-overlay" visible="false">
+        <children>
+            <BorderPane fx:id="blurLayer" opacity="1.0">
+                <effect><BoxBlur height="12" iterations="3" width="12"/></effect>
+            </BorderPane>
+
+            <VBox fx:id="orderCard" alignment="CENTER" spacing="12" styleClass="order-card"
+                  prefWidth="900.0" prefHeight="600.0" maxWidth="1000.0" maxHeight="800.0">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                <children>
+                    <StackPane styleClass="order-image-wrap" alignment="CENTER">
+                        <ImageView fx:id="orderImage" fitWidth="420.0" fitHeight="320.0" preserveRatio="true"/>
+                    </StackPane>
+
+                    <Label fx:id="orderTitle" styleClass="order-title" wrapText="true" textAlignment="CENTER"/>
+                    <Label fx:id="orderDesc" styleClass="order-desc" wrapText="true" maxWidth="720.0" textAlignment="CENTER"/>
+                    <Label fx:id="orderPrice" styleClass="order-price"/>
+
+                    <HBox spacing="12" alignment="CENTER">
+                        <Label text="Jumlah:" styleClass="muted"/>
+                        <HBox spacing="8" alignment="CENTER" styleClass="qty-control">
+                            <Button onAction="#decreaseQty" styleClass="qty-btn" text="-"/>
+                            <Label fx:id="lblQty" text="1" styleClass="qty-label"/>
+                            <Button onAction="#increaseQty" styleClass="qty-btn" text="+"/>
+                        </HBox>
+                    </HBox>
+
+                    <HBox spacing="12" alignment="CENTER">
+                        <Button onAction="#confirmAddToCart" styleClass="addcart-button wide" text="Tambah ke Keranjang"/>
+                        <Button onAction="#closeOrderPanel" styleClass="cancel-button" text="Batal"/>
+                    </HBox>
+                </children>
+            </VBox>
+        </children>
+    </StackPane>
+</StackPane>

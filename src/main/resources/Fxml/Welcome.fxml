@@ -4,56 +4,84 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="750.0" prefWidth="1200.0" styleClass="welcome-container" stylesheets="@../Styles/Welcome.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kelompok6.bakmi.Controllers.WelcomeController">
-
-    <left>
-        <VBox alignment="CENTER" prefHeight="640.0" prefWidth="300.0" spacing="10.0" styleClass="logo-panel">
-            <children>
-                <ImageView fitHeight="236.0" fitWidth="258.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../Images/logo_bakmi.png" />
-                    </image>
-                </ImageView>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="BAKMI PENS" />
-            </children>
-        </VBox>
-    </left>
+<BorderPane fx:id="rootPane" prefHeight="750.0" prefWidth="1200.0"
+            styleClass="welcome-container" stylesheets="@../Styles/Welcome.css"
+            xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.kelompok6.bakmi.Controllers.WelcomeController">
 
     <center>
         <VBox alignment="CENTER" spacing="50.0" styleClass="welcome-container">
             <children>
-                <Label text="Makan di Sini atau bawa pulang?" wrapText="true" />
+                <Label text="Makan di Sini atau bawa pulang?" wrapText="true"/>
 
                 <HBox alignment="CENTER" spacing="40.0">
                     <children>
-
-                        <Button fx:id="takeAwayButton" onAction="#btnTakeAwayClick" prefHeight="264.0" prefWidth="0.0" styleClass="welcome-button" text="Bawa Pulang">
+                        <Button onAction="#btnTakeAwayClick" prefHeight="264.0" prefWidth="0.0"
+                                styleClass="welcome-button" text="Bawa Pulang">
                             <graphic>
                                 <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../Images/takeaway.png" />
+                                        <Image url="@../Images/takeaway.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>
+                            <font>
+                                <Font size="8.0"/>
+                            </font>
                         </Button>
-                        <Button fx:id="dineInButton" onAction="#btnDineInClick" prefHeight="264.0" prefWidth="0.0" styleClass="welcome-button" text="Makan di Sini">
+
+                        <Button onAction="#btnDineInClick" prefHeight="264.0" prefWidth="0.0"
+                                styleClass="welcome-button" text="Makan Disini">
                             <graphic>
                                 <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../Images/dine_in.png" />
+                                        <Image url="@../Images/dine_in.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>
+                            <font>
+                                <Font size="8.0"/>
+                            </font>
                         </Button>
                     </children>
                 </HBox>
             </children>
         </VBox>
     </center>
+
+    <left>
+        <AnchorPane prefHeight="827.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox alignment="CENTER" prefHeight="750.0" prefWidth="300.0" spacing="10.0" styleClass="logo-panel"
+                      AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                    <children>
+                        <ImageView fitHeight="236.0" fitWidth="258.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Images/logo_bakmi.png"/>
+                            </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="BAKMI PENS"/>
+                    </children>
+                </VBox>
+
+                <Button fx:id="floatingButton"
+                        mnemonicParsing="false"
+                        text="Admin"
+                        styleClass="floating-button"
+                        visible="false"
+                        managed="false"
+                        onAction="#onFloatingButtonClick"
+                        AnchorPane.leftAnchor="12.0"
+                        AnchorPane.bottomAnchor="12.0"/>
+            </children>
+        </AnchorPane>
+    </left>
 
 </BorderPane>

@@ -1,4 +1,3 @@
-/* --- Variable Definitions --- */
 .root {
     -fx-primary-color: #FEC208;
     -fx-secondary-color: #CF240A;
@@ -6,14 +5,12 @@
     -fx-light-color: #FFFFFF;
 }
 
-/* --- Main Container --- */
 .welcome-container {
     -fx-background-color: -fx-primary-color;
     -fx-font-family: "McDonalds Helvetica";
     -fx-font-size: 3em;
 }
 
-/* --- Logo Panel (Left Side) --- */
 .logo-panel {
     -fx-background-color: -fx-secondary-color;
 }
@@ -33,12 +30,11 @@
     -fx-font-size: 1.5em;
 }
 
-/* --- Button Styles --- */
 .welcome-button {
     -fx-background-color: -fx-light-color;
     -fx-text-fill: #444444;
     -fx-font-family: "McDonalds Helvetica";
-    -fx-font-size: 0.6em; /* Ukuran font relatif terhadap parent */
+    -fx-font-size: 0.6em;
     -fx-padding: 20 30 20 30;
     -fx-background-radius: 15;
     -fx-cursor: hand;
@@ -49,4 +45,20 @@
 
 .welcome-button:hover {
     -fx-background-color: -fx-accent-color; /* Warna berubah saat cursor di atasnya */
+}
+
+.floating-button {
+    -fx-background-color: -fx-secondary-color; /* gunakan variable tema */
+    -fx-text-fill: white;
+    -fx-font-weight: 700;
+    -fx-background-radius: 8;
+    -fx-padding: 8 12;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.14), 6, 0, 0, 2);
+}
+
+/* optional: small hover style on the button itself */
+.floating-button:hover {
+    -fx-opacity: 0.95;
+    -fx-translateY: -2;
 }

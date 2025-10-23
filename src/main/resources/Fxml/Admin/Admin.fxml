@@ -1,14 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<BorderPane xmlns="http://javafx.com/javafx/25" prefHeight="750.0" prefWidth="1200.0"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.kelompok6.bakmi.Controllers.Admin.AdminController"
-            prefHeight="400.0" prefWidth="600.0">
+            stylesheets="@../../Styles/Admin.css">
 
-</AnchorPane>
+    <top>
+        <HBox spacing="12" styleClass="admin-top">
+            <padding>
+                <Insets top="12" right="12" bottom="12" left="12"/>
+            </padding>
+            <children>
+                <Label text="Admin Panel" styleClass="admin-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label text="Operator: admin" />
+                <Button text="Refresh" fx:id="btnTopRefresh" onAction="#onRefreshAll"/>
+            </children>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox spacing="8" styleClass="admin-sidebar" prefWidth="200">
+            <padding>
+                <Insets top="12" right="12" bottom="12" left="12"/>
+            </padding>
+            <children>
+                <Button text="Dashboard" fx:id="btnDashboard" onAction="#showDashboard" />
+                <Button text="Pesanan" fx:id="btnOrders" onAction="#showOrders" />
+                <Button text="Menu" fx:id="btnMenu" onAction="#showMenu" />
+                <Button text="Laporan" fx:id="btnReports" onAction="#showReports" />
+
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button text="Logout" fx:id="btnLogout" onAction="#onLogout"/>
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <TabPane fx:id="mainTabs" tabClosingPolicy="UNAVAILABLE">
+            <padding>
+                <Insets top="12" right="12" bottom="12" left="12"/>
+            </padding>
+            <tabs>
+
+                <Tab text="Pesanan">
+                    <content>
+                        <VBox spacing="8">
+                            <padding>
+                                <Insets top="6" right="6" bottom="6" left="6"/>
+                            </padding>
+                            <children>
+                                <HBox spacing="8">
+                                    <Label text="Filter:"/>
+                                    <ComboBox fx:id="cbStatusFilter" promptText="Semua status" prefWidth="160"/>
+                                    <TextField fx:id="tfSearchOrders" promptText="Cari kode / customer..." HBox.hgrow="ALWAYS"/>
+                                    <Button text="Refresh" fx:id="btnRefreshOrders" onAction="#onRefreshOrders"/>
+                                </HBox>
+
+                                <SplitPane orientation="HORIZONTAL">
+                                    <items>
+                                        <!-- left: orders table -->
+                                        <AnchorPane>
+                                            <children>
+                                                <TableView fx:id="tblOrders" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+                                                           AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+                                                    <columns>
+                                                        <TableColumn fx:id="colKode" text="Kode" prefWidth="120"/>
+                                                        <TableColumn fx:id="colCustomer" text="Customer" prefWidth="160"/>
+                                                        <TableColumn fx:id="colTotal" text="Total" prefWidth="100" />
+                                                        <TableColumn fx:id="colStatus" text="Status" prefWidth="140"/>
+                                                        <TableColumn fx:id="colWaktu" text="Waktu" prefWidth="160"/>
+                                                        <TableColumn fx:id="colAction" text="Aksi" prefWidth="160"/>
+                                                    </columns>
+                                                </TableView>
+                                            </children>
+                                        </AnchorPane>
+
+                                        <!-- right: order detail / actions -->
+                                        <VBox spacing="10" prefWidth="380" styleClass="admin-detail-panel">
+                                            <padding>
+                                                <Insets top="12" right="12" bottom="12" left="12"/>
+                                            </padding>
+                                            <children>
+                                                <Label text="Detail Pesanan" styleClass="detail-title"/>
+                                                <TextArea fx:id="taOrderDetail" editable="false" wrapText="true" prefRowCount="8"/>
+                                                <HBox spacing="8">
+                                                    <Button text="Set Diproses" onAction="#onSetDiproses"/>
+                                                    <Button text="Set Siap Ambil" onAction="#onSetSiapAmbil"/>
+                                                    <Button text="Set Selesai" onAction="#onSetSelesai"/>
+                                                    <Region HBox.hgrow="ALWAYS"/>
+                                                    <Button text="Batalkan" onAction="#onCancelOrder" styleClass="danger"/>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+
+                <Tab text="Menu">
+                    <content>
+                        <VBox spacing="8">
+                            <padding>
+                                <Insets top="6" right="6" bottom="6" left="6"/>
+                            </padding>
+                            <children>
+                                <HBox spacing="8">
+                                    <TextField fx:id="tfSearchMenu" promptText="Cari nama menu..." HBox.hgrow="ALWAYS"/>
+                                    <Button text="Tambah" onAction="#onAddMenu" fx:id="btnAddMenu"/>
+                                    <Button text="Edit" onAction="#onEditMenu" fx:id="btnEditMenu"/>
+                                    <Button text="Hapus" onAction="#onDeleteMenu" fx:id="btnDeleteMenu" styleClass="danger"/>
+                                </HBox>
+
+                                <TableView fx:id="tblMenu" prefHeight="520">
+                                    <columns>
+                                        <TableColumn fx:id="colMenuId" text="ID" prefWidth="60"/>
+                                        <TableColumn fx:id="colMenuName" text="Nama" prefWidth="240"/>
+                                        <TableColumn fx:id="colMenuCategory" text="Kategori" prefWidth="120"/>
+                                        <TableColumn fx:id="colMenuFilter" text="Filter" prefWidth="120"/>
+                                        <TableColumn fx:id="colMenuPrice" text="Harga" prefWidth="100"/>
+                                        <TableColumn fx:id="colMenuAction" text="Aksi" prefWidth="140"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+
+                <Tab text="Laporan">
+                    <content>
+                        <VBox spacing="8">
+                            <padding>
+                                <Insets top="12" right="12" bottom="12" left="12"/>
+                            </padding>
+                            <children>
+                                <Label text="Laporan dan Statistik" styleClass="section-title"/>
+                                <Label text="(Placeholder — tambahkan grafik atau export CSV sesuai kebutuhan)"/>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+
+            </tabs>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="8" styleClass="admin-bottom">
+            <padding>
+                <Insets top="8" right="8" bottom="8" left="8"/>
+            </padding>
+            <children>
+                <Label fx:id="lblStatusBar" text="Ready" />
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Kembali" fx:id="btnBackToWelcome" onAction="#onBackToWelcome" />
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>

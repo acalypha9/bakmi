@@ -1,0 +1,7 @@
+module:com.kelompok6.bakmi
+com.kelompok6.bakmi
+com.kelompok6.bakmi.Controllers
+com.kelompok6.bakmi.Controllers.Admin
+com.kelompok6.bakmi.Controllers.Customers
+com.kelompok6.bakmi.Database
+com.kelompok6.bakmi.Models

@@ -1,9 +1,3 @@
-/* Customer.css
-   - Uses your color variables
-   - Styles for a 3-column tile menu (image, name, price only)
-*/
-
-/* --- Variable Definitions --- */
 .root {
     -fx-primary-color: #FEC208;
     -fx-secondary-color: #CF240A;
@@ -11,7 +5,6 @@
     -fx-light-color: #FFFFFF;
 }
 
-/* --- Main Container --- */
 .welcome-container {
     -fx-background-color: -fx-primary-color;
     -fx-font-family: "McDonalds Helvetica", "Helvetica", "Arial", sans-serif;
@@ -19,62 +12,102 @@
     -fx-padding: 12;
 }
 
-/* Top logo */
 .logo-panel {
     -fx-padding: 12 18;
-    -fx-alignment: center-left;
-    -fx-spacing: 12;
+    -fx-alignment: center;
+    -fx-spacing: 16;
     -fx-background-color: transparent;
 }
 
 .logo-panel .text {
-    -fx-font-size: 1.8em;
+    -fx-font-size: 2em;
     -fx-fill: -fx-secondary-color;
     -fx-font-weight: bold;
 }
 
-/* Left content (category buttons) */
 .content-panel {
     -fx-background-color: -fx-light-color;
-    -fx-font-family: "McDonalds Helvetica", "Helvetica", "Arial", sans-serif;
     -fx-padding: 16;
 }
 
-/* --- Scroll / Grid --- */
+.sidebar-title {
+    -fx-font-size: 1.1em;
+    -fx-font-weight: 700;
+    -fx-padding: 6 0 6 6;
+    -fx-text-fill: #222222;
+}
+
+.section-button {
+    -fx-pref-width: 220px;
+    -fx-pref-height: 44px;
+    -fx-background-radius: 8;
+    -fx-background-color: -fx-light-color;
+    -fx-border-color: rgba(0, 0, 0, 0.06);
+    -fx-font-weight: 700;
+    -fx-text-fill: #333333;
+    -fx-cursor: hand;
+}
+
+.section-button:hover {
+    -fx-background-color: #f8f8f8;
+}
+
+.section-button:selected,
+.section-button:armed {
+    -fx-background-color: -fx-secondary-color;
+    -fx-text-fill: -fx-light-color;
+}
+
+.category-title {
+    -fx-font-size: 1.25em;
+    -fx-font-weight: 700;
+    -fx-padding: 2 0 6 0;
+}
+
 .menu-scroll {
     -fx-background: transparent;
     -fx-padding: 6;
-    -fx-fit-to-width: true;
 }
 
 .menu-grid {
-    -fx-hgap: 18;
-    -fx-vgap: 18;
-    -fx-padding: 8;
+    -fx-hgap: 28;
+    -fx-vgap: 28;
+    -fx-padding: 12;
     -fx-alignment: top-center;
 }
 
-/* --- Menu card (single tile) --- */
 .menu-card {
     -fx-background-color: -fx-light-color;
     -fx-background-radius: 12;
-    -fx-padding: 12;
-    -fx-alignment: center;
-    -fx-spacing: 8;
-    -fx-pref-width: 260px;      /* card width; 3 columns -> adjust to screen */
-    -fx-pref-height: 220px;
     -fx-border-color: rgba(0,0,0,0.06);
     -fx-border-width: 1;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 6, 0.0, 0, 2);
+    -fx-border-radius: 12;
+    -fx-padding: 18;
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: 260px;
+    -fx-pref-height: 240px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 4, 0, 0, 2);
+    -fx-min-width: 180px;
+    -fx-min-height: 180px;
 }
 
-/* image inside the card */
+.menu-card:hover {
+    -fx-background-color: #f4f4f4;
+    -fx-border-color: -fx-secondary-color;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.14), 12, 0, 0, 4);
+}
+
 .menu-card ImageView {
     -fx-fit-width: 160px;
-    -fx-fit-height: 110px;
+    -fx-fit-height: 140px;
 }
 
-/* name + price */
+.menu-card .image-view {
+    -fx-margin: 0 0 8 0;
+}
+
 .menu-name {
     -fx-font-size: 1.0em;
     -fx-font-weight: 700;
@@ -89,29 +122,199 @@
     -fx-text-alignment: center;
 }
 
-/* hover effect for card */
-.menu-card:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 10, 0.0, 0, 4);
-    -fx-translate-y: -4px;
+.qty-button {
+    -fx-background-color: #ddd;
+    -fx-font-size: 1.2em;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 4 10 4 10;
+    -fx-cursor: hand;
 }
 
-/* Section button styling left */
-.section-button {
-    -fx-pref-width: 220px;
-    -fx-pref-height: 44px;
+.qty-button:hover {
+    -fx-background-color: #ccc;
+}
+
+.addcart-button {
+    -fx-background-color: #d84c2b;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
     -fx-background-radius: 8;
-    -fx-background-color: -fx-light-color;
-    -fx-border-color: rgba(0,0,0,0.06);
-    -fx-font-weight: 700;
-    -fx-text-fill: #333333;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
 }
 
-/* selected look (toggle in controller) */
-.section-button:selected, .section-button:armed {
+.addcart-button:hover {
+    -fx-background-color: #b33c20;
+}
+
+.cancel-button {
+    -fx-background-color: #ccc;
+    -fx-text-fill: #333;
+    -fx-background-radius: 8;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+}
+
+.cancel-button:hover {
+    -fx-background-color: #bbb;
+}
+
+#lblQty {
+    -fx-font-size: 1.2em;
+    -fx-font-weight: bold;
+}
+
+.centered {
+    -fx-alignment: center;
+}
+
+.muted {
+    -fx-text-fill: #666666;
+    -fx-font-size: 0.9em;
+}
+
+/* --- Modal overlay --- */
+.modal-overlay {
+    -fx-alignment: center;
+    -fx-background-color: rgba(0,0,0,0.25);
+}
+
+.order-card {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-background-radius: 16;
+    -fx-border-color: rgba(0,0,0,0.06);
+    -fx-border-radius: 16;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 18, 0, 0, 6);
+    -fx-alignment: center;
+    -fx-max-width: 520px;
+}
+
+.order-image-wrap {
+    -fx-pref-width: 140px;
+    -fx-pref-height: 110px;
+
+    -fx-background-color: transparent;
+
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+
+    -fx-effect: none;
+
+    -fx-alignment: center;
+}
+
+#orderTitle, .order-title {
+    -fx-font-weight: 800;
+    -fx-font-size: 1.15em;
+    -fx-text-fill: #222222;
+}
+
+#orderDesc, .order-desc {
+    -fx-font-size: 0.95em;
+    -fx-text-fill: #666666;
+    -fx-max-width: 240px;
+    -fx-wrap-text: true;
+}
+
+#orderPrice, .order-price {
+    -fx-font-size: 1.05em;
+    -fx-font-weight: 800;
+    -fx-text-fill: -fx-secondary-color;
+    -fx-padding: 4 0 0 0;
+}
+
+.qty-control {
+    -fx-background-color: #fafafa;
+    -fx-background-radius: 10;
+    -fx-padding: 6 10;
+    -fx-alignment: center;
+    -fx-border-color: rgba(0,0,0,0.04);
+    -fx-border-radius: 10;
+}
+
+.qty-btn {
+    -fx-background-color: #ffffff;
+    -fx-border-color: rgba(0,0,0,0.06);
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-min-width: 36;
+    -fx-min-height: 28;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.qty-btn:hover {
+    -fx-background-color: #f2f2f2;
+}
+
+.qty-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 1.05em;
+    -fx-padding: 0 6;
+}
+
+.addcart-button.wide {
+    -fx-padding: 10 20;
+}
+
+.addcart-button {
+    -fx-background-color: -fx-secondary-color;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 8 14;
+    -fx-cursor: hand;
+}
+
+.cancel-button {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(0,0,0,0.08);
+    -fx-text-fill: #333;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 8 14;
+}
+
+.cancel-button:hover {
+    -fx-background-color: rgba(0,0,0,0.03);
+}
+
+#orderPanel {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 16, 0, 0, 6);
+}
+
+.button.top-active {
     -fx-background-color: -fx-secondary-color;
     -fx-text-fill: -fx-light-color;
+    -fx-font-weight: bold;
 }
 
-/* utilities */
-.centered { -fx-alignment: center; }
-.muted { -fx-text-fill: #666666; -fx-font-size: 0.9em; }
+#cartCard, .cart-card {
+    -fx-pref-width: 1000px;
+    -fx-max-width: 1100px;
+    -fx-min-height: 420px;
+    -fx-background-color: white;
+    -fx-padding: 18;
+    -fx-background-radius: 12;
+    -fx-border-color: rgba(0,0,0,0.06);
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.18), 12, 0, 0, 6);
+}
+
+.modal-overlay {
+    -fx-alignment: center;
+    -fx-background-color: rgba(0,0,0,0.28);
+}
+
+.confirm-card {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-background-radius: 16;
+    -fx-border-color: rgba(0,0,0,0.06);
+    -fx-border-radius: 16;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 18, 0, 0, 6);
+    -fx-alignment: center;
+    -fx-max-width: 520px;
+}
